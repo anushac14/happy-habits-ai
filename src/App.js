@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import {supabase} from './supabaseClient';
+import { supabase } from './supabaseClient';
 import HabitsList from './Components/HabitsList';
 import TasksList from './Components/TasksList';
 import Calendar from './Components/Calendar';
 import CurrentDateTime from './Components/CurrentDateTime';
 import './App.css';
 
-
 function App() {
   const [habits, setHabits] = useState([]);
-  const [tasks, setTasks] = useState([]);
   const [todayTasks, setTodayTasks] = useState([]);
 
   useEffect(() => {
@@ -17,6 +15,7 @@ function App() {
     fetchTasks();
   }, []);
 
+  // Fetch habits from the `habits` table
   const fetchHabits = async () => {
     try {
       const { data, error } = await supabase.from('habits').select('*');
@@ -29,21 +28,24 @@ function App() {
     }
   };
 
+  // Fetch tasks from the `tasks` table for today
   const fetchTasks = async () => {
     try {
-      const { data, error } = await supabase.from('tasks').select('*');
+      const today = new Date().toISOString().split('T')[0]; // Get today's date in 'YYYY-MM-DD' format
+      const { data, error } = await supabase
+        .from('tasks')
+        .select('*')
+        .eq('date', today); // Fetch tasks for today
       if (error) {
         throw error;
       }
-      setTasks(data);
-      // Filter today's tasks
-      const today = new Date().toDateString();
-      setTodayTasks(data.filter(task => new Date(task.created_at).toDateString() === today));
+      setTodayTasks(data);
     } catch (error) {
       console.error('Error fetching tasks:', error.message);
     }
   };
 
+  // Add a new habit to the `habits` table and initialize today's task
   const addHabit = async (name) => {
     try {
       const { data, error } = await supabase.from('habits').insert([{ name }]).select();
@@ -54,35 +56,38 @@ function App() {
         const habit = data[0];
         setHabits([...habits, habit]);
 
-        // Also add it to today's tasks
-        const { data: taskData, error: taskError } = await supabase
+        // Initialize the task for today
+        const today = new Date().toISOString().split('T')[0];
+        const { error: taskError } = await supabase
           .from('tasks')
-          .insert([{ name: habit.name, habit_id: habit.id, status: false }])
-          .select();
+          .insert([{ habit_id: habit.id, date: today, status: false }]);
         if (taskError) {
           throw taskError;
         }
-        if (taskData && taskData.length > 0) {
-          setTodayTasks([...todayTasks, taskData[0]]);
-        }
+        setTodayTasks([...todayTasks, { habit_id: habit.id, date: today, status: false }]);
       }
     } catch (error) {
       console.error('Error adding habit:', error.message);
     }
   };
 
-  const toggleTaskStatus = async (taskId, currentStatus) => {
+  // Toggle the status of a task for today
+  const toggleTaskStatus = async (habitId, currentStatus) => {
     try {
+      const today = new Date().toISOString().split('T')[0];
       const { data, error } = await supabase
         .from('tasks')
         .update({ status: !currentStatus })
-        .eq('id', taskId)
+        .eq('habit_id', habitId)
+        .eq('date', today)
         .select();
       if (error) {
         throw error;
       }
       if (data && data.length > 0) {
-        setTodayTasks(todayTasks.map(task => task.id === taskId ? data[0] : task));
+        setTodayTasks(todayTasks.map(task =>
+          task.habit_id === habitId ? { ...task, status: !currentStatus } : task
+        ));
       }
     } catch (error) {
       console.error('Error toggling task status:', error.message);
@@ -92,7 +97,7 @@ function App() {
   return (
     <div>
       <CurrentDateTime />
-      <Calendar habits={habits} tasks={tasks} />
+      <Calendar habits={habits} />
       <HabitsList habits={habits} onAddHabit={addHabit} />
       <TasksList tasks={todayTasks} onToggleTaskStatus={toggleTaskStatus} />
     </div>
