@@ -1,0 +1,279 @@
+@import url("https://fonts.googleapis.com/css2?family=Akshar:wght@300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  /* transition: 0.3s ease; */
+  text-decoration: none;
+  list-style-type: none;
+}
+
+/* img {
+  width: 100%;
+  height: auto;
+} */
+/* 
+.flex{
+  display: flex;
+  align-items: center;
+}
+
+.grid{
+  display: grid;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.btn{
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px lightgray;
+}
+
+.btn .icon{
+  margin-left: .5rem;
+}
+
+.btn:hover{
+  background: palegreen;
+  color: var(--Primary);
+}
+
+:root{
+  --Primary: hsl(94,59%,35%)
+  --HoverColor: #bdf094
+  --textColor: hsl(240,1%,48%)
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}*/
+
+.container {
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  overflow: hidden;
+}
+
+.sideBar {
+  background: rgb(255, 255, 255);
+}
+
+.sideBar {
+  border-right: 1px solid lightgray;
+  padding: 23px;
+  /* padding-top: 35px; */
+  width: 300px;
+  height: 100vh;
+  flex-shrink: 0;
+}
+
+.logoDiv {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logoDiv h2 {
+  font-weight: 300;
+  font-size: 23px;
+  font-family: "Akshar", sans-serif;
+  color: #343c6a;
+}
+
+.logoDiv img {
+  width: 40px;
+  border-radius: 7px;
+}
+
+.menuDiv {
+  margin-top: 45px;
+  margin-left: 20px;
+}
+
+.listItem a {
+  margin-bottom: 45px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #b1b1b1;
+  font-weight: 400;
+}
+
+.listItem img {
+  width: 20px;
+}
+
+/* BODY */
+
+.container-body {
+  flex-grow: 1;
+  height: 100vh;
+}
+
+.TopBarDiv {
+  /* background-color: red; */
+  border-bottom: 1px solid lightgray;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.TopBarDiv h3 {
+  font-weight: 500;
+  font-size: 25px;
+  color: #343c6a;
+}
+
+.search-bar-container {
+  position: relative;
+}
+
+.search-bar {
+  border: none;
+  color: #8ba3cb;
+  border-radius: 9999px;
+  padding: 10px 16px;
+  width: 250px;
+  outline: none;
+  /* box-shadow: inset 0 0 0 1px #ccc; */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: #f5f7fa;
+}
+
+.search-bar:focus {
+  border-color: #ffc176;
+  box-shadow: 0 0 0 1px #ffc176;
+}
+
+.search-bar::placeholder {
+  color: #8ba3cb;
+  opacity: 1;
+}
+
+.circle {
+  width: 40px;
+  height: 40px;
+  background-color: #f5f7fa;
+  border-radius: 50%;
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.circle img {
+  width: 50%;
+}
+
+.Bar-RightSide {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.pageContainer {
+  padding: 15px;
+}
+
+/* ANALYTIC PAGE ---------------------------------------*/
+
+.section-title {
+  color: #e0a56f;
+  font-weight: 500;
+  font-size: 25px;
+}
+
+.section-title span {
+  font-size: 30px;
+}
+
+.card {
+  width: 252px;
+  height: 150px;
+  border-radius: 7px;
+  padding: 17px;
+}
+
+.squareIcon {
+  position: relative;
+  background-color: white;
+  width: 55px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 11px;
+}
+
+.squareIcon img {
+  width: 40px;
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cardTop h3 {
+  font-weight: 500;
+}
+
+.cardBottom {
+  margin-top: 10px;
+  background-color: white;
+  border-radius: 7px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: 300;
+}
+
+.cardBottom img {
+  width: 30px;
+}
+
+.statCardContainer {
+  margin-top: 26px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.chart-container {
+  margin: 0 auto;
+  width: 100%;
+  height: 370px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.video-player {
+  max-width: 100%;
+  height: auto;
+  position: relative;
+  border-radius: 10px;
+  align-self: center;
+  justify-self: center;
+  margin: 15px 0px;
+}
+
+.dashboardLeft {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* background-color: red; */
+}

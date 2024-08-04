@@ -1,0 +1,49 @@
+.calendar {
+  width: 400px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.calendar-day {
+  position: relative;
+  padding: 10px;
+  width: 47px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  border-radius: 5000px;
+
+  transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.calendar-day:hover {
+  transform: scale(1.05);
+}
+
+.day-number {
+  font-weight: bold;
+  font-size: 10px;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 5px;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #ffc176;
+  transition: width 0.3s;
+}
+
+.calendarContainer {
+  width: fit-content;
+}

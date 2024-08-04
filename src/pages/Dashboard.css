@@ -1,0 +1,103 @@
+.dateTimeContainer h1 {
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.dateTimeContainer p {
+  color: rgb(141, 141, 141);
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+.calendar-header {
+  margin-top: 30px;
+}
+
+.calendar-header h2 {
+  font-weight: 500;
+  font-size: 21px;
+  margin: 10px 0px;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+.Habits {
+  /* background-color: rgb(245, 245, 245); */
+  box-shadow: rgba(232, 227, 227, 0.02) 0px 1px 3px 0px,
+    rgba(160, 152, 152, 0.15) 0px 0px 0px 1px;
+  padding: 20px;
+  border-radius: 10px;
+  flex-grow: 1;
+}
+
+.Habits h2 {
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.Habits input {
+  background-color: #f5f7fa;
+  padding: 10px 20px;
+  border-radius: 500px;
+  width: 100%;
+  outline: #8ba3cb;
+  border: none;
+  margin-bottom: 10px;
+}
+
+.Habits input::placeholder {
+  color: #8ba3cb;
+  opacity: 1;
+}
+
+.Habits button {
+  background-color: #ffc176;
+  color: white;
+  font-weight: 600;
+  border: none;
+  padding: 10px 20px;
+  width: 100%;
+  margin-bottom: 10px;
+  border-radius: 500px;
+}
+
+.NewHabitList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.task-item {
+  background-color: rgb(240, 240, 240);
+  padding: 7px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 500px;
+}
+
+.task-item .checkbox {
+  position: absolute;
+  left: 630px;
+}
+
+.habit-suggestions {
+  margin-top: 20px;
+}
+
+.habit-suggestions h3 {
+  margin-bottom: 10px;
+}
+
+.habit-suggestions ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.habit-suggestions li {
+  margin-bottom: 5px;
+}
