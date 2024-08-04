@@ -1,25 +1,23 @@
 import React from 'react';
 
-function TasksList({ tasks, onToggleTaskStatus }) {
+const TasksList = ({ tasks, onToggleTaskStatus }) => {
   return (
     <div>
-      <h2>Today's Todos</h2>
+      <h2>Today's To-Dos</h2>
       <ul>
         {tasks.map(task => (
           <li key={task.id}>
-            <label>
-              <input
-                type="checkbox"
-                checked={task.status}
-                onChange={() => onToggleTaskStatus(task.id, task.status)}
-              />
-              {task.name}
-            </label>
+            <input
+              type="checkbox"
+              checked={task.status}
+              onChange={() => onToggleTaskStatus(task.id, task.status)}
+            />
+            {task.name}
           </li>
         ))}
       </ul>
     </div>
   );
-}
+};
 
 export default TasksList;
