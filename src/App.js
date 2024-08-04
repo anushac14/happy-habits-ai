@@ -95,7 +95,7 @@ function App() {
   return (
     <div>
       <CurrentDateTime />
-      <Calendar habits={habits} />
+      {/* <Calendar habits={habits} /> */}
       <HabitsList habits={habits} onAddHabit={addHabit} />
       <TasksList tasks={todayTasks} onToggleTaskStatus={toggleTaskStatus} />
     </div>
